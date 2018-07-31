@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="container">
+    <div class="starter-template">
+        <h1 th:text="${message}"> </h1>
+         <table>
+
+        <tr> <td th:each="temp : ${message}"> Data:</td></tr>
+            <!--/*@thymesVar id="temp" type="customermanagement.customer.model.Customer"*/-->
+            <tr> <td th:text="${temp.id}">   </td></tr>
+            <tr> <td th:text="${temp.name}">   </td></tr>
+            <tr> <td th:text="${temp.address}">   </td></tr>
+            <tr> <td th:text="${temp.phone}">   </td></tr>
+        </table>>
+    </div>
+</div>
+</body>
+</html>
