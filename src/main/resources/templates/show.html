@@ -1,12 +1,18 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Customer</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+
 <div class="container">
     <div class="starter-template">
+        <tr th:text="${message}">
+        <p sec:authorize="hasRole('ROLE_USER')">
+            OK
+        </p>
          <table  border=1 >
              <tr class ="header">
                  <td>ID   </td>
