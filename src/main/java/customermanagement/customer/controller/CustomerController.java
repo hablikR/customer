@@ -18,25 +18,12 @@ public class CustomerController {
         this.customerServiceImpl = customerServiceImpl;
     }
 
-    @RequestMapping(value = "/findall", method = RequestMethod.GET)
-    public Iterable<Customer> findAllCustomer()
-    {
-        return this.customerServiceImpl.findAll();
-    }
-
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    @ResponseBody
-    public Customer addNew(@RequestBody Customer customer){
-        customerServiceImpl.save(customer);
-        return customer;
-    }
-
     @RequestMapping("/")
     public String index(){
         return "index";
     }
 
-    @RequestMapping("/find")
+    @RequestMapping("/findall")
     public String show(Model model){
         Iterable<Customer> customerList = customerServiceImpl.findAll();
         model.addAttribute("customers", customerList);
