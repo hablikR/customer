@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 public class CustomerController {
 
@@ -21,7 +19,7 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/findall", method = RequestMethod.GET)
-    public List<Customer> findAllCustomer()
+    public Iterable<Customer> findAllCustomer()
     {
         return this.customerServiceImpl.findAll();
     }
@@ -40,9 +38,8 @@ public class CustomerController {
 
     @RequestMapping("/find")
     public String show(Model model){
-        List<Customer> customerList = customerServiceImpl.findAll();
-        model.addAttribute("message", customerList);
-
+        Iterable<Customer> customerList = customerServiceImpl.findAll();
+        model.addAttribute("customers", customerList);
         return "show";
     }
 

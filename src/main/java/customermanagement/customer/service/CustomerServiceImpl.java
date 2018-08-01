@@ -5,7 +5,7 @@ import customermanagement.customer.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+
 
 @Service
 public class CustomerServiceImpl implements CustomerService{
@@ -18,8 +18,8 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public List<Customer> findAll() {
-        return (List<Customer>) this.customerRepository.findAll();
+    public Iterable<Customer> findAll() {
+        return  this.customerRepository.findAll();
     }
 
     @Override

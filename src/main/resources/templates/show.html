@@ -7,16 +7,21 @@
 <body>
 <div class="container">
     <div class="starter-template">
-        <h1 th:text="${message}"> </h1>
-         <table>
+         <table  border=1 >
+             <tr class ="header">
+                 <td>ID   </td>
+                 <td>Name   </td>
+                 <td>Address   </td>
+                 <td>Phone   </td>
 
-        <tr> <td th:each="temp : ${message}"> Data:</td></tr>
-            <!--/*@thymesVar id="temp" type="customermanagement.customer.model.Customer"*/-->
-            <tr> <td th:text="${temp.id}">   </td></tr>
-            <tr> <td th:text="${temp.name}">   </td></tr>
-            <tr> <td th:text="${temp.address}">   </td></tr>
-            <tr> <td th:text="${temp.phone}">   </td></tr>
-        </table>>
+             <tr>
+             <tr th:each="temp : ${customers}">
+             <td th:text="${temp.id}">   </td>
+             <td th:text="${temp.name}">   </td>
+             <td th:text="${temp.address}">   </td>
+             <td th:text="${temp.phone}">   </td>
+             <tr>
+         </table>
     </div>
 </div>
 </body>
