@@ -1,12 +1,13 @@
 package customermanagement.customer.service;
 
+import customermanagement.customer.dto.CustomerDTO;
 import customermanagement.customer.model.Customer;
 
-import java.util.Optional;
+import java.util.List;
 
 public interface CustomerService{
 
-    Iterable<Customer> findAll();
+    List<CustomerDTO> findAll();
 
     void save(Customer customer);
 
@@ -14,7 +15,7 @@ public interface CustomerService{
 
     void delete(Long id);
 
-    Optional<Customer> findByID (Long id);
+    CustomerDTO findByID (Long id);
 
 
 }

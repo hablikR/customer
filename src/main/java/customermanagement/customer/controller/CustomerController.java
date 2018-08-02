@@ -1,5 +1,6 @@
 package customermanagement.customer.controller;
 
+import customermanagement.customer.dto.CustomerDTO;
 import customermanagement.customer.model.Customer;
 import customermanagement.customer.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,17 +31,16 @@ public class CustomerController{
         return "index";
     }
 
-    @RequestMapping("/findall")
+    @RequestMapping("/show")
     public String show(Model model){
-        Iterable<Customer> customerList = customerService.findAll();
+        Iterable<CustomerDTO> customerList = customerService.findAll();
         model.addAttribute("customers", customerList);
         return "show";
     }
 
-    @RequestMapping(value = "/remove/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/remove", method = RequestMethod.GET)
     public String removeByID(@PathVariable(name= "id") Long id, Model model){
         model.addAttribute("customers", customerService.findByID(id));
-        model.addAttribute("message", "Customer removed!");
         customerService.delete(id);
         return "show";
     }

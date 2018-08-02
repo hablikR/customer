@@ -1,5 +1,6 @@
 package customermanagement.customer.service;
 
+import customermanagement.customer.dto.CustomerDTO;
 import customermanagement.customer.model.Customer;
 import customermanagement.customer.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,19 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public Iterable<Customer> findAll() {
-        return  this.customerRepository.findAll();
+    public List<CustomerDTO> findAll() {
+        return  convertToDTOList((List<Customer>) this.customerRepository.findAll());
     }
 
     @Override
-    public Optional<Customer> findByID(Long id) {
-        return customerRepository.findById(id);
+    public CustomerDTO findByID(Long id) {
+        Optional<Customer> customer = this.customerRepository.findById(id);
+
+        if(customer.isPresent()){
+            return convertToDTO(customer.get());
+        }
+        return null;
+
     }
 
     @Override
@@ -44,4 +51,26 @@ public class CustomerServiceImpl implements CustomerService{
     public void delete(Long id) {
         customerRepository.deleteById(id);
     }
+
+
+    public CustomerDTO convertToDTO(Customer customer){
+        CustomerDTO custDTO = new CustomerDTO();
+
+        custDTO.id = customer.getId();
+        custDTO.name= customer.getName();
+        custDTO.address = customer.getAddress();
+        custDTO.phone = customer.getPhone();
+
+        return  custDTO;
+    }
+
+    public List<CustomerDTO> convertToDTOList(List<Customer> customerList){
+      List<CustomerDTO> dtoList = new ArrayList<CustomerDTO>();
+        for(Customer c : customerList){
+            dtoList.add(convertToDTO(c));
+        }
+        return dtoList;
+    }
+
+
 }
