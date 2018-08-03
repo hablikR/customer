@@ -1,9 +1,13 @@
 package customermanagement.customer.model;
 
+import customermanagement.customer.dto.CustomerDTO;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.swing.text.DefaultEditorKit;
+import java.util.Comparator;
 
 @Entity
 public class Customer {
@@ -23,6 +27,13 @@ public class Customer {
     private String phone;
 
     public Customer() {
+    }
+
+    public Customer(CustomerDTO customerDTO){
+
+        this.name  =customerDTO.name;
+        this.address  = customerDTO.address;
+        this.phone = customerDTO.phone;
     }
 
     @Override
@@ -72,4 +83,6 @@ public class Customer {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+
 }

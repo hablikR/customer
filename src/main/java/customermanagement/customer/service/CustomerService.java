@@ -9,7 +9,7 @@ public interface CustomerService{
 
     List<CustomerDTO> findAll();
 
-    void save(Customer customer);
+    void save(CustomerDTO customerDTO);
 
     boolean existById(Long id);
 

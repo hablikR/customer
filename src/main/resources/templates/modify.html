@@ -1,16 +1,31 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <title>Customer Modifications</title>
 
-    <form th:action="@{/remove}" method="get">
+    <h1>Remove user:</h1>
+    <br/>
 
-        <h1>Remove user:</h1>>
+    <form action="#" th:action="@{/remove}"  method="post">
         <div><label> UserID : <input type="number" name="id"/> </label></div>
-        <div><input type="submit" value="Remove user"/></div>
-
+        <div><input type="submit" value="Remove user" /></div>
     </form>
+
+    <h1>Add user:</h1>
+    <br/>
+
+    <form th:action="@{/add}" th:object=" ${customerDTO}" method="post">
+
+        <div><label> Name : <input type="text" th:text="#{name}" name="name"/> </label></div>
+        <div><label> Address: <input type="text" th:text="#{address}" name="address"/> </label></div>
+        <div><label> Phone : <input type="text" th:text=" #{phone}" name="phone"/> </label></div>
+
+        <div><input type="submit" value="Add user" /></div>
+    </form>
+
+
 </head>
 <body>
 
