@@ -1,13 +1,46 @@
 package customermanagement.customer.dto;
 
+import customermanagement.customer.model.Customer;
+
 public class CustomerDTO {
 
-    public Long id;
+    private Long id;
 
-    public String name;
+    private String name;
 
-    public String address;
+    private String address;
 
-    public String phone;
+    private String phone;
 
+    public CustomerDTO(Long id,  String name, String address, String phone) {
+        this.id =id;
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+    }
+
+    public CustomerDTO(Customer customer){
+        this.name = customer.getName();
+        this.address = customer.getAddress();
+        this.phone = customer.getPhone();
+    }
+
+    public CustomerDTO() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
 }

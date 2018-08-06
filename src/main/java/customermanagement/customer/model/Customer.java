@@ -31,19 +31,10 @@ public class Customer {
 
     public Customer(CustomerDTO customerDTO){
 
-        this.name  =customerDTO.name;
-        this.address  = customerDTO.address;
-        this.phone = customerDTO.phone;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
+        this.id = customerDTO.getId();
+        this.name  =customerDTO.getName();
+        this.address  = customerDTO.getAddress();
+        this.phone = customerDTO.getPhone();
     }
 
     public Customer(String name, String address, String phone) {
@@ -56,33 +47,18 @@ public class Customer {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
 
 }

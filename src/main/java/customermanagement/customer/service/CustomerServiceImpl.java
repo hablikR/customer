@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,17 +29,17 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     public CustomerDTO findByID(Long id) {
         Optional<Customer> customer = this.customerRepository.findById(id);
-
         if(customer.isPresent()){
             return convertToDTO(customer.get());
         }
-        return null;
-
+        else {
+            return null;
+        }
     }
 
     @Override
     public void save(CustomerDTO customerDTO) {
-        Customer customer = new Customer();
+        Customer customer = new Customer(customerDTO);
         this.customerRepository.save(customer);
     }
 
@@ -54,19 +53,17 @@ public class CustomerServiceImpl implements CustomerService{
         customerRepository.deleteById(id);
     }
 
-
-    public CustomerDTO convertToDTO(Customer customer){
-        CustomerDTO custDTO = new CustomerDTO();
-
-        custDTO.id = customer.getId();
-        custDTO.name= customer.getName();
-        custDTO.address = customer.getAddress();
-        custDTO.phone = customer.getPhone();
-
-        return  custDTO;
+    public void updateService(CustomerDTO customerDTO){
+        if(existById(customerDTO.getId())) {
+            this.save(customerDTO);
+        }
     }
 
-    public List<CustomerDTO> convertToDTOList(List<Customer> customerList){
+    private CustomerDTO convertToDTO(Customer customer){
+        return new CustomerDTO(customer.getId(), customer.getName(),customer.getAddress(),customer.getPhone());
+    }
+
+    private List<CustomerDTO> convertToDTOList(List<Customer> customerList){
       List<CustomerDTO> dtoList = new ArrayList<CustomerDTO>();
         for(Customer c : customerList){
             dtoList.add(convertToDTO(c));
