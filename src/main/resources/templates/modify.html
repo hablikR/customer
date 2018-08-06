@@ -13,18 +13,18 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
         <div><input type="submit" value="Remove user" /></div>
     </form>
 
-    <h1>Add user:</h1>
+ <!--   <h1>Add user:</h1>
     <br/>
 
     <form th:action="@{/add}" th:object=" ${customerDTO}" method="post">
 
-        <div><label> Name : <input type="text" th:text="#{name}" name="name"/> </label></div>
-        <div><label> Address: <input type="text" th:text="#{address}" name="address"/> </label></div>
-        <div><label> Phone : <input type="text" th:text=" #{phone}" name="phone"/> </label></div>
+        <label> Name : <input type="text" th:value="${customer.name}" name="name"/> </label>
+        <label> Address: <input type="text" th:text="#{address}" name="address"/> </label>
+        <label> Phone : <input type="text" th:text=" #{phone}" name="phone"/> </label>
 
         <div><input type="submit" value="Add user" /></div>
     </form>
-
+-->
 
 </head>
 <body>
