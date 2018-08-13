@@ -4,7 +4,10 @@ import customermanagement.customer.dto.CustomerDTO;
 import customermanagement.customer.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Controller
@@ -36,5 +39,17 @@ public class CustomerController{
         customerService.delete(id);
     }
 
+    @RequestMapping(value = "/show", method = RequestMethod.GET)
 
+    public List<CustomerDTO> show(){
+        Iterable<CustomerDTO> customerList = customerService.findAll();
+        return (List<CustomerDTO>) customerList;
+    }
+
+    @RequestMapping(value = "/show/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public CustomerDTO showByID (@PathVariable(value = "id")Long id){
+        CustomerDTO customerDTO = customerService.findByID(id);
+            return customerDTO;
+    }
 }

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.swing.text.DefaultEditorKit;
 import java.util.Comparator;
+import java.util.Objects;
 
 @Entity
 public class Customer {
@@ -58,7 +59,5 @@ public class Customer {
     public String getPhone() {
         return phone;
     }
-
-
 
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/api/customer")
+@RequestMapping("/customer")
 public class CustomerTemplateController {
 
     private CustomerService customerService;
