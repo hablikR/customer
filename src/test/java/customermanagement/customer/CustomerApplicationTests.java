@@ -72,6 +72,17 @@ public class CustomerApplicationTests {
         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
+    @Test
+    public void postTest2() throws Exception {
+
+        CustomerDTO customerDTO = new CustomerDTO(new Long(2),"Feri","Mars","022");
+        String content = "{\"id\":\"1\",\"name\":\"Sanyi\",\"address\":\"Sirok\",\"phone\":\"01234567889\"}";
+        this.mockMvc.perform(post("http://localhost:8080/api/customer/")
+                .content(toJason(customerDTO))
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
 
     @Test
     public void deleteTest() throws Exception {
