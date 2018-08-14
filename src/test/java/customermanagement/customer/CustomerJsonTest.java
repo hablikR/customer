@@ -2,19 +2,12 @@ package customermanagement.customer;
 
 
 import customermanagement.customer.dto.CustomerDTO;
-import customermanagement.customer.service.CustomerService;
-
 import org.junit.*;
 import org.junit.runner.*;
 import org.springframework.beans.factory.annotation.*;
-
-import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import org.springframework.boot.test.json.*;
 import org.springframework.test.context.junit4.*;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
-
 
 @RunWith(SpringRunner.class)
 @org.springframework.boot.test.autoconfigure.json.JsonTest

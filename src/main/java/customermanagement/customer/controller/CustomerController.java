@@ -23,8 +23,9 @@ public class CustomerController{
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public void addNew(@RequestBody CustomerDTO customer){
+    public CustomerDTO addNew(@RequestBody CustomerDTO customer){
         customerService.save(customer);
+        return customer;
     }
 
     @RequestMapping(method = RequestMethod.PUT)
