@@ -41,7 +41,7 @@ public class CustomerController{
     }
 
     @RequestMapping(value = "/show", method = RequestMethod.GET)
-
+    @ResponseBody
     public List<CustomerDTO> show(){
         Iterable<CustomerDTO> customerList = customerService.findAll();
         return (List<CustomerDTO>) customerList;
